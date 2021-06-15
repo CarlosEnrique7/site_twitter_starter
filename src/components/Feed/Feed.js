@@ -1,6 +1,6 @@
-import Tweet from "../Tweet/Tweet"
-import TweetInput from "../TweetInput/TweetInput"
-import "./Feed.css"
+import Tweet from "../Tweet/Tweet";
+import TweetInput from "../TweetInput/TweetInput";
+import "./Feed.css";
 
 const firstTweet = {
   id: -1,
@@ -10,12 +10,12 @@ const firstTweet = {
   comments: 445,
   retweets: 121,
   likes: 165000,
-}
+};
 
-export default function Feed() {
+export default function Feed({ tweets, addTweets }) {
   return (
     <div className="col feed">
-      <TweetInput />
+      <TweetInput addTweet={addTweets} />
 
       <div className="see-new-tweets">
         <p>
@@ -25,9 +25,12 @@ export default function Feed() {
 
       <div className="twitter-feed">
         {/* example first tweet */}
-        <Tweet tweet={firstTweet} />
+        {tweets.map((tweet) => (
+          <Tweet tweet={tweet} key={tweet.id} />
+        ))}
+
         {/* */}
       </div>
     </div>
-  )
+  );
 }

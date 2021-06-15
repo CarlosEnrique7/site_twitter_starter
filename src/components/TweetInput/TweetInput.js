@@ -1,6 +1,22 @@
-import "./TweetInput.css"
+import { useState } from "react";
+import "./TweetInput.css";
 
-export default function TweetInput() {
+export default function TweetInput({ addTweet }) {
+  const [isExpanded, setExpanded] = useState(false);
+  const [value, setValue] = useState("");
+
+  const handleTweetTextChange = () => {
+    if (value || !isExpanded) {
+      setExpanded(true);
+    } else {
+      setExpanded(false);
+    }
+  };
+
+  const handleInput = (event) => {
+    setValue(event.target.value);
+  };
+
   return (
     <div className="tweet-container">
       <div className="tweet-box-top row">
@@ -10,7 +26,15 @@ export default function TweetInput() {
           </i>
         </span>
 
-        <textarea name="new-tweet" type="text" placeholder="What's Happening?"></textarea>
+        <textarea
+          name="new-tweet"
+          type="text"
+          placeholder="What's Happening?"
+          className={isExpanded ? "expanded" : ""}
+          onFocus={handleTweetTextChange}
+          onBlur={handleTweetTextChange}
+          onChange={handleInput}
+        ></textarea>
 
         <i className="fas fa-image"></i>
       </div>
@@ -30,5 +54,5 @@ export default function TweetInput() {
         </div>
       </div>
     </div>
-  )
+  );
 }

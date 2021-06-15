@@ -26,7 +26,7 @@ export default function App({ userProfile = defaultUserProfile }) {
       <Navbar />
       <main className="main">
         <UserProfile profile={defaultUserProfile} />
-        <Feed />
+        <Feed tweets={tweets} addTweet={addTweet} />
         <Advertisements />
       </main>
     </div>
