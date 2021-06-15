@@ -1,6 +1,6 @@
-import "./UserProfile.css"
+import "./UserProfile.css";
 
-function UserProfile() {
+function UserProfile({ profile }) {
   return (
     <div className="col user-profile">
       <div className="user-info">
@@ -12,19 +12,19 @@ function UserProfile() {
             </i>
           </span>
           <div className="twitter-handle">
-            <h3></h3>
-            <p></p>
+            <h3>{profile.name}</h3>
+            <p>@{profile.handle}</p>
           </div>
         </div>
         <div className="card-bottom">
           <p>Tweets</p>
           <p>Followers</p>
-          <h3></h3>
-          <h3></h3>
+          <h3>{profile.numTweets}</h3>
+          <h3>{profile.numFollowers}</h3>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default UserProfile
+export default UserProfile;
